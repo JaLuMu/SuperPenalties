@@ -1,0 +1,6 @@
+host: localhost
+port: 3306
+database: superpenalties
+user: superpenalties
+password: superpenalties
+poolsize: 4
