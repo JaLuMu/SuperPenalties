@@ -30,8 +30,6 @@ object SQLDatabase {
 
         source = HikariDataSource(hikariConfig)
 
-        val conn: Connection = source.connection
-
         execute(
             "CREATE TABLE IF NOT EXISTS registered_penalties(\n" +
                     "name VARCHAR(25) not null,\n" +
