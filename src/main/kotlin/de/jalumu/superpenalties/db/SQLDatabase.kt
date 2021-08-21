@@ -3,6 +3,7 @@ package de.jalumu.superpenalties.db
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import de.jalumu.superpenalties.config.SuperPenaltyConfig
+import org.ktorm.database.Database
 import java.sql.Connection
 import java.sql.ResultSet
 import java.util.*
@@ -12,6 +13,7 @@ import javax.sql.DataSource
 object SQLDatabase {
 
     lateinit var source: DataSource
+    lateinit var database: Database
 
     fun init() {
         val config = SuperPenaltyConfig.loadConfig("mysql")
@@ -29,6 +31,8 @@ object SQLDatabase {
         hikariConfig.maximumPoolSize = config?.getInt("poolsize")!!
 
         source = HikariDataSource(hikariConfig)
+
+        database = Database.connect(source)
 
         execute(
             "CREATE TABLE IF NOT EXISTS registered_penalties(\n" +

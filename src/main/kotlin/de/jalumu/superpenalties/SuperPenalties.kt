@@ -2,6 +2,7 @@ package de.jalumu.superpenalties
 
 import de.jalumu.superpenalties.commands.AddPenaltyCommand
 import de.jalumu.superpenalties.commands.PenaltyCommand
+import de.jalumu.superpenalties.commands.RemovePenaltyCommand
 import de.jalumu.superpenalties.db.SQLDatabase
 import de.jalumu.superpenalties.listener.PenaltyListener
 import net.md_5.bungee.api.ProxyServer

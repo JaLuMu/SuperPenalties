@@ -25,15 +25,22 @@ repositories {
 }
 
 dependencies {
+
+    //CORE LIBRARIES
     compileOnly 'net.md-5:bungeecord-api:1.16-R0.4'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-    implementation group: 'com.zaxxer', name: 'HikariCP', version: '5.0.0'
+
+    //DATABASE DRIVERS
     implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.7.3'
+    implementation group: 'com.zaxxer', name: 'HikariCP', version: '5.0.0'
+    implementation group: 'org.ktorm', name: 'ktorm-core', version: '3.4.1'
+
+    //METRICS
     implementation 'org.bstats:bstats-bungeecord:2.2.1'
 }
 
-// Relocating a Package
 shadowJar {
+    // Relocating BStats
     relocate 'org.bstats', 'de.jalumu.superpenalties.metrics'
 }
 

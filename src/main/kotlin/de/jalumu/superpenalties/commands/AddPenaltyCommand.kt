@@ -1,10 +1,13 @@
 package de.jalumu.superpenalties.commands
 
 import de.jalumu.superpenalties.db.SQLDatabase
+import de.jalumu.superpenalties.db.tables.CurrentPenaltiesTable
+import de.jalumu.superpenalties.db.tables.RegisteredPenaltiesTable
 import net.md_5.bungee.api.CommandSender
 import net.md_5.bungee.api.chat.TextComponent
 import net.md_5.bungee.api.plugin.Command
 import net.md_5.bungee.api.plugin.TabExecutor
+import org.ktorm.dsl.insert
 
 class AddPenaltyCommand : Command("addPenalty", "superpenalty.add"), TabExecutor {
     override fun execute(sender: CommandSender, args: Array<out String>) {
@@ -22,7 +25,17 @@ class AddPenaltyCommand : Command("addPenalty", "superpenalty.add"), TabExecutor
                 val time = args[2]
                 val unit = args[3]
                 val multiplicator = args[4]
-                SQLDatabase.execute("INSERT INTO `registered_penalties` (`name`, `type`, `time`, `time_unit`, `multiplicator`) VALUES ('$name', '$type', '$time', '$unit', '$multiplicator');")
+
+                //SQLDatabase.execute("INSERT INTO `registered_penalties` (`name`, `type`, `time`, `time_unit`, `multiplicator`) VALUES ('$name', '$type', '$time', '$unit', '$multiplicator');")
+
+                SQLDatabase.database.insert(RegisteredPenaltiesTable) {
+                    set(it.name,name)
+                    set(it.type,type)
+                    set(it.time,time.toInt())
+                    set(it.time_unit,unit)
+                    set(it.multiplicator,multiplicator.toInt())
+                }
+
                 sender.sendMessage(TextComponent("Penalty added"))
             } else {
                 sender.sendMessage(TextComponent("USAGE: /addPenalty <penalty_name> <penalty_type> <penalty_time> <penalty_unit> <penalty_multiplicator>"))
