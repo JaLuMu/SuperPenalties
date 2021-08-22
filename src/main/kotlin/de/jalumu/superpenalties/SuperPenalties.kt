@@ -17,6 +17,7 @@ class SuperPenalties : Plugin() {
         SQLDatabase.init()
         ProxyServer.getInstance().pluginManager.registerCommand(this, AddPenaltyCommand())
         ProxyServer.getInstance().pluginManager.registerCommand(this, PenaltyCommand())
+        ProxyServer.getInstance().pluginManager.registerCommand(this, RemovePenaltyCommand())
         ProxyServer.getInstance().pluginManager.registerListener(this,PenaltyListener())
 
         val metrics = Metrics(this, 12429)

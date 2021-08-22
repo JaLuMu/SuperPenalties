@@ -3,6 +3,7 @@ package de.jalumu.superpenalties.commands
 import de.jalumu.superpenalties.db.SQLDatabase
 import de.jalumu.superpenalties.db.tables.CurrentPenaltiesTable
 import de.jalumu.superpenalties.db.tables.RegisteredPenaltiesTable
+import de.jalumu.superpenalties.handler.PenaltyCacheHandler
 import de.jalumu.superpenalties.handler.PenaltyHandler
 import net.md_5.bungee.api.CommandSender
 import net.md_5.bungee.api.chat.TextComponent
@@ -26,6 +27,8 @@ class RemovePenaltyCommand : Command("removePenalty", "superpenalty.remove"), Ta
                 SQLDatabase.database.delete(RegisteredPenaltiesTable){
                     it.name eq name
                 }
+
+                PenaltyCacheHandler.invalidate()
 
         }else {
                 sender.sendMessage(TextComponent("USAGE: /removePenalty <penalty_name>"))
