@@ -18,9 +18,6 @@ class RemovePenaltyCommand : Command("removePenalty", "superpenalty.remove"), Ta
             if (args.size == 1) {
                 val name = args[0]
 
-                //SQLDatabase.execute("DELETE FROM registered_penalties WHERE name = '$name';")
-                //SQLDatabase.execute("DELETE FROM current_penalties WHERE penalty_name = '$name';")
-
                 SQLDatabase.database.delete(CurrentPenaltiesTable){
                     it.penalty_name eq name
                 }

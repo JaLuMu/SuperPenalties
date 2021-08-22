@@ -2,9 +2,13 @@ package de.jalumu.superpenalties.handler
 
 import de.jalumu.superpenalties.db.SQLDatabase
 import de.jalumu.superpenalties.db.tables.CurrentPenaltiesTable
+import de.jalumu.superpenalties.db.tables.RegisteredPenaltiesTable
 import net.md_5.bungee.api.chat.TextComponent
 import net.md_5.bungee.api.connection.ProxiedPlayer
+import org.ktorm.dsl.forEach
+import org.ktorm.dsl.from
 import org.ktorm.dsl.insert
+import org.ktorm.dsl.select
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -13,15 +17,13 @@ object PenaltyHandler {
     val penalties: List<String>
         get() {
             val list = mutableListOf<String>()
-            val result = SQLDatabase.query("SELECT name from registered_penalties")!!
-            while (result.next()) {
-                list.add(result.getString("name"))
+            SQLDatabase.database.from(RegisteredPenaltiesTable).select(RegisteredPenaltiesTable.name).forEach {
+                list.add(it[RegisteredPenaltiesTable.name]!!)
             }
             return list
         }
 
     fun executePenalty(player: ProxiedPlayer, penalty: String) {
-        //SQLDatabase.execute("INSERT INTO current_penalties (uuid, penalty_name, penalty_start) VALUES ('${player.uniqueId}', '$penalty', DEFAULT);")
 
         SQLDatabase.database.insert(CurrentPenaltiesTable) {
             set(it.uuid, player.uniqueId.toString())
@@ -34,8 +36,8 @@ object PenaltyHandler {
     }
 
     fun isBanned(player: ProxiedPlayer, refreshCache: Boolean = false): Boolean {
-        //val result = SQLDatabase.query("SELECT * FROM current_penalties left join registered_penalties ON current_penalties.penalty_name = registered_penalties.name WHERE uuid='${player.uniqueId}' AND type=1;\n")!!
         var history = 0
+
         if (refreshCache) {
             PenaltyCacheHandler.banCache.refresh(player.uniqueId)
         }
@@ -70,8 +72,8 @@ object PenaltyHandler {
 
 
     fun isMuted(player: ProxiedPlayer, refreshCache: Boolean = false): Boolean {
-        // val result = SQLDatabase.query("SELECT * FROM current_penalties left join registered_penalties ON current_penalties.penalty_name = registered_penalties.name WHERE uuid='${player.uniqueId}' AND type=2;\n")!!
         var history = 0
+
         if (refreshCache) {
             PenaltyCacheHandler.muteCache.refresh(player.uniqueId)
         }

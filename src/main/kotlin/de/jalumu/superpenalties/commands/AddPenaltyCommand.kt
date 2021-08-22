@@ -26,8 +26,6 @@ class AddPenaltyCommand : Command("addPenalty", "superpenalty.add"), TabExecutor
                 val unit = args[3]
                 val multiplicator = args[4]
 
-                //SQLDatabase.execute("INSERT INTO `registered_penalties` (`name`, `type`, `time`, `time_unit`, `multiplicator`) VALUES ('$name', '$type', '$time', '$unit', '$multiplicator');")
-
                 SQLDatabase.database.insert(RegisteredPenaltiesTable) {
                     set(it.name,name)
                     set(it.type,type)
