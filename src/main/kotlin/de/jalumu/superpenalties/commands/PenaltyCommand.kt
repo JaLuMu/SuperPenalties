@@ -13,7 +13,7 @@ class PenaltyCommand : Command("penalty", "superpenalty.penalty"), TabExecutor {
             if (args.size == 2) {
                 val player = ProxyServer.getInstance().getPlayer(args[0])
                 val penalty = args[1]
-                PenaltyHandler.executePenalty(player, penalty)
+                PenaltyHandler.executePenalty(player,sender.name, penalty)
                 sender.sendMessage(TextComponent("Strafe erfolgreich ausgeteilt!"))
             } else {
                 sender.sendMessage(TextComponent("USAGE: /penalty <player_name> <penalty_name>"))

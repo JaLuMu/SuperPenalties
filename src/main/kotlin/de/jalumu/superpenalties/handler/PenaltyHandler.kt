@@ -23,10 +23,11 @@ object PenaltyHandler {
             return list
         }
 
-    fun executePenalty(player: ProxiedPlayer, penalty: String) {
+    fun executePenalty(player: ProxiedPlayer, executor: String, penalty: String) {
 
         SQLDatabase.database.insert(CurrentPenaltiesTable) {
             set(it.uuid, player.uniqueId.toString())
+            set(it.executor, executor)
             set(it.penalty_name, penalty)
             set(it.penalty_start, LocalDateTime.now())
         }

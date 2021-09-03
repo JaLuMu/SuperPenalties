@@ -44,10 +44,15 @@ object SQLDatabase {
         )
 
         execute(
-            "CREATE TABLE IF NOT EXISTS current_penalties(\n" +
-                    "\tuuid VARCHAR(36) not null,\n" +
-                    "\tpenalty_name VARCHAR(25) not null,\n" +
-                    "\tpenalty_start DATETIME default now() not null);"
+            "CREATE TABLE IF NOT EXISTS current_penalties\n" +
+                    "(\n" +
+                    "    id            int auto_increment\n" +
+                    "        primary key,\n" +
+                    "    uuid          varchar(36) not null,\n" +
+                    "    executor      varchar(20) null,\n" +
+                    "    penalty_name  varchar(25) not null,\n" +
+                    "    penalty_start datetime    not null\n" +
+                    ");"
         )
     }
 
