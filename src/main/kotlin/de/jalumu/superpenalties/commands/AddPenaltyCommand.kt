@@ -1,5 +1,6 @@
 package de.jalumu.superpenalties.commands
 
+import de.jalumu.superpenalties.data.MessageData
 import de.jalumu.superpenalties.db.SQLDatabase
 import de.jalumu.superpenalties.db.tables.CurrentPenaltiesTable
 import de.jalumu.superpenalties.db.tables.RegisteredPenaltiesTable
@@ -18,7 +19,7 @@ class AddPenaltyCommand : Command("addPenalty", "superpenalty.add"), TabExecutor
                     "BAN" -> 1
                     "MUTE" -> 2
                     else -> {
-                        sender.sendMessage(TextComponent("USAGE: /addPenalty <penalty_name> <penalty_type> <penalty_time> <penalty_unit> <penalty_multiplicator>"))
+                        sender.sendMessage(TextComponent(MessageData.addPenaltyUsage))
                         return
                     }
                 }
@@ -34,9 +35,9 @@ class AddPenaltyCommand : Command("addPenalty", "superpenalty.add"), TabExecutor
                     set(it.multiplicator,multiplicator.toInt())
                 }
 
-                sender.sendMessage(TextComponent("Penalty added"))
+                sender.sendMessage(TextComponent(MessageData.penaltyCreated))
             } else {
-                sender.sendMessage(TextComponent("USAGE: /addPenalty <penalty_name> <penalty_type> <penalty_time> <penalty_unit> <penalty_multiplicator>"))
+                sender.sendMessage(TextComponent(MessageData.addPenaltyUsage))
             }
         }
     }

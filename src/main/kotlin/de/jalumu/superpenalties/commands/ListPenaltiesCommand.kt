@@ -1,5 +1,7 @@
 package de.jalumu.superpenalties.commands
 
+import de.jalumu.superpenalties.data.MessageData
+import de.jalumu.superpenalties.data.PlayerAdditions.getOfflinePlayerUUID
 import de.jalumu.superpenalties.db.SQLDatabase
 import de.jalumu.superpenalties.db.tables.CurrentPenaltiesTable
 import de.jalumu.superpenalties.db.tables.RegisteredPenaltiesTable
@@ -13,12 +15,25 @@ import org.ktorm.dsl.*
 import java.time.Duration
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import java.util.*
 
 class ListPenaltiesCommand : Command("listPenalties", "superpenalty.list"), TabExecutor {
     override fun execute(sender: CommandSender, args: Array<out String>) {
         if (sender.hasPermission("superpenalty.list")) {
             if (args.size == 1) {
                 val player = ProxyServer.getInstance().getPlayer(args[0])
+
+                var uuid : UUID?
+
+                if (player == null) {
+                    uuid = args[0].getOfflinePlayerUUID()
+                    if (uuid == null) {
+                        sender.sendMessage(TextComponent(MessageData.peneltyListPlayerNotFound))
+                        return
+                    }
+                } else {
+                    uuid = player.uniqueId
+                }
 
                 var bans = 0
                 var mutes = 0
@@ -36,7 +51,7 @@ class ListPenaltiesCommand : Command("listPenalties", "superpenalty.list"), TabE
                         RegisteredPenaltiesTable.time_unit,
                         RegisteredPenaltiesTable.multiplicator
                     )
-                    .where { (CurrentPenaltiesTable.uuid eq player.uniqueId.toString()) }.forEach { row ->
+                    .where { (CurrentPenaltiesTable.uuid eq uuid!!.toString()) }.forEach { row ->
                         val penalty = row[CurrentPenaltiesTable.penalty_name]!!
                         val type = row[RegisteredPenaltiesTable.type]!!
                         val start = row[CurrentPenaltiesTable.penalty_start]!!
@@ -73,19 +88,21 @@ class ListPenaltiesCommand : Command("listPenalties", "superpenalty.list"), TabE
 
                         val finalPenaltyTime = start.plus(multipliedPenaltyTime)
 
-                        sender.sendMessage(TextComponent(penalty))
-                        sender.sendMessage(TextComponent("  Type: $typeName"))
-                        sender.sendMessage(TextComponent("  Time: $time$unit"))
-                        sender.sendMessage(TextComponent("  Multiplicator: $multiplicator"))
-                        sender.sendMessage(TextComponent("  Multiplied By: $multiplied"))
-                        sender.sendMessage(TextComponent("  Start: ${start.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"))}"))
-                        sender.sendMessage(TextComponent("  End: ${finalPenaltyTime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"))}"))
-
-
+                        sender.sendMessage(TextComponent(
+                            MessageData.penaltyList
+                                .replace("%PENALTYNAME%", penalty)
+                                .replace("%typeName%", typeName)
+                                .replace("%time%", time.toString())
+                                .replace("%timeUnit%", unit)
+                                .replace("%multiplicator%", multiplicator.toString())
+                                .replace("%multiplied%", multiplied.toString())
+                                .replace("%startTime%", start.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")))
+                                .replace("%endTime%", finalPenaltyTime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")))
+                        ))
                     }
 
             } else {
-                sender.sendMessage(TextComponent("USAGE: /listPenalties <player_name>"))
+                sender.sendMessage(TextComponent(MessageData.peneltyListUsage))
             }
         }
     }

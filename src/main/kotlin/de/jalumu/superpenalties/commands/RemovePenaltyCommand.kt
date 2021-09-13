@@ -1,5 +1,6 @@
 package de.jalumu.superpenalties.commands
 
+import de.jalumu.superpenalties.data.MessageData
 import de.jalumu.superpenalties.db.SQLDatabase
 import de.jalumu.superpenalties.db.tables.CurrentPenaltiesTable
 import de.jalumu.superpenalties.db.tables.RegisteredPenaltiesTable
@@ -28,7 +29,7 @@ class RemovePenaltyCommand : Command("removePenalty", "superpenalty.remove"), Ta
                 PenaltyCacheHandler.invalidate()
 
         }else {
-                sender.sendMessage(TextComponent("USAGE: /removePenalty <penalty_name>"))
+                sender.sendMessage(TextComponent(MessageData.peneltyRemoveUsage))
             }
 
         }

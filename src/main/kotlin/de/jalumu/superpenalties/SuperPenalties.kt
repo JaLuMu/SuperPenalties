@@ -4,11 +4,12 @@ import de.jalumu.superpenalties.commands.AddPenaltyCommand
 import de.jalumu.superpenalties.commands.ListPenaltiesCommand
 import de.jalumu.superpenalties.commands.PenaltyCommand
 import de.jalumu.superpenalties.commands.RemovePenaltyCommand
+import de.jalumu.superpenalties.data.Config
 import de.jalumu.superpenalties.db.SQLDatabase
 import de.jalumu.superpenalties.listener.PenaltyListener
 import net.md_5.bungee.api.ProxyServer
 import net.md_5.bungee.api.plugin.Plugin
-import org.bstats.bungeecord.Metrics
+// import org.bstats.bungeecord.Metrics
 
 class SuperPenalties : Plugin() {
 
@@ -22,7 +23,9 @@ class SuperPenalties : Plugin() {
         ProxyServer.getInstance().pluginManager.registerCommand(this, ListPenaltiesCommand())
         ProxyServer.getInstance().pluginManager.registerListener(this, PenaltyListener())
 
-        val metrics = Metrics(this, 12429)
+        Config.init()
+
+        // val metrics = Metrics(this, 12429)
     }
 
     override fun onDisable() {
