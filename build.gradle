@@ -38,6 +38,7 @@ dependencies {
     //METRICS
     implementation 'org.bstats:bstats-bungeecord:2.2.1'
 
+    //OTHER STUFF
     implementation group: 'org.json', name: 'json', version: '20090211'
 }
 
