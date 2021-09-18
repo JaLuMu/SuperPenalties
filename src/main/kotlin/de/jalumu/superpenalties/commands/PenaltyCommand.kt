@@ -1,5 +1,7 @@
 package de.jalumu.superpenalties.commands
 
+import de.jalumu.superpenalties.data.MessageData
+import de.jalumu.superpenalties.data.PlayerAdditions.getOfflinePlayerUUID
 import de.jalumu.superpenalties.handler.PenaltyHandler
 import net.md_5.bungee.api.CommandSender
 import net.md_5.bungee.api.ProxyServer
@@ -8,15 +10,29 @@ import net.md_5.bungee.api.plugin.Command
 import net.md_5.bungee.api.plugin.TabExecutor
 
 class PenaltyCommand : Command("penalty", "superpenalty.penalty"), TabExecutor {
+
     override fun execute(sender: CommandSender, args: Array<out String>) {
         if (sender.hasPermission("superpenalty.penalty")) {
             if (args.size == 2) {
                 val player = ProxyServer.getInstance().getPlayer(args[0])
                 val penalty = args[1]
-                PenaltyHandler.executePenalty(player,sender.name, penalty)
-                sender.sendMessage(TextComponent("Strafe erfolgreich ausgeteilt!"))
+                if (player == null) {
+                    val uuid = args[0].getOfflinePlayerUUID()
+
+                    if (uuid == null) {
+                        sender.sendMessage(TextComponent(MessageData.peneltyCouldNotExecuted))
+                    } else {
+                        PenaltyHandler.executePenalty(uuid, sender.name, penalty)
+                        sender.sendMessage(TextComponent(MessageData.penaltyExecuted))
+                    }
+
+                } else {
+                    PenaltyHandler.executePenalty(player, sender.name, penalty)
+                    sender.sendMessage(TextComponent(MessageData.penaltyExecuted))
+
+                }
             } else {
-                sender.sendMessage(TextComponent("USAGE: /penalty <player_name> <penalty_name>"))
+                sender.sendMessage(TextComponent(MessageData.penaltyUsage))
             }
         }
     }
