@@ -3,6 +3,27 @@
 
 __________
 
+![](img/features.png)
+
+
+
+- Bla Bla
+- Bla Bla
+- Bla Bla
+
+__________
+
+![](img/commands.png)
+
+
+
+- Bla Bla
+- Bla Bla
+- Bla Bla
+
+
+__________
+
 ![](img/metrics.png)
 
 
