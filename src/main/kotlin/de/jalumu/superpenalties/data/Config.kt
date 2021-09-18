@@ -7,19 +7,18 @@ import net.md_5.bungee.config.YamlConfiguration
 import java.io.File
 
 
-
-
 object Config {
 
     lateinit var configuration: Configuration
 
     fun save() {
-        ConfigurationProvider.getProvider(YamlConfiguration::class.java).save(configuration, File(SuperPenalties.instance.dataFolder, "config.yml"))
+        ConfigurationProvider.getProvider(YamlConfiguration::class.java)
+            .save(configuration, File(SuperPenalties.instance.dataFolder, "config.yml"))
     }
 
     fun init() {
 
-        val dataFolder : File = SuperPenalties.instance.dataFolder
+        val dataFolder: File = SuperPenalties.instance.dataFolder
 
         if (!dataFolder.exists()) dataFolder.mkdir()
 
@@ -31,7 +30,8 @@ object Config {
                 file.createNewFile()
             }
 
-            configuration = ConfigurationProvider.getProvider(YamlConfiguration::class.java).load(File(dataFolder, "config.yml"))
+            configuration =
+                ConfigurationProvider.getProvider(YamlConfiguration::class.java).load(File(dataFolder, "config.yml"))
 
             if (configuration.contains("message.penaltyExecuted")) {
                 MessageData.penaltyExecuted = configuration.getString("message.penaltyExecuted").replace("&", "§")
@@ -44,7 +44,8 @@ object Config {
                 configuration.set("message.penaltyCreated", MessageData.penaltyCreated)
             }
             if (configuration.contains("message.peneltyCouldNotExecuted")) {
-                MessageData.peneltyCouldNotExecuted = configuration.getString("message.peneltyCouldNotExecuted").replace("&", "§")
+                MessageData.peneltyCouldNotExecuted =
+                    configuration.getString("message.peneltyCouldNotExecuted").replace("&", "§")
             } else {
                 configuration.set("message.peneltyCouldNotExecuted", MessageData.peneltyCouldNotExecuted)
             }
@@ -59,7 +60,8 @@ object Config {
                 configuration.set("message.peneltyBan", MessageData.peneltyBan)
             }
             if (configuration.contains("message.peneltyListPlayerNotFound")) {
-                MessageData.peneltyListPlayerNotFound = configuration.getString("message.peneltyListPlayerNotFound").replace("&", "§")
+                MessageData.peneltyListPlayerNotFound =
+                    configuration.getString("message.peneltyListPlayerNotFound").replace("&", "§")
             } else {
                 configuration.set("message.peneltyListPlayerNotFound", MessageData.peneltyListPlayerNotFound)
             }
@@ -91,7 +93,7 @@ object Config {
 
             save()
 
-        } catch (e : Exception) {
+        } catch (e: Exception) {
             e.printStackTrace()
         }
     }

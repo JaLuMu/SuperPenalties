@@ -9,7 +9,7 @@ import de.jalumu.superpenalties.db.SQLDatabase
 import de.jalumu.superpenalties.listener.PenaltyListener
 import net.md_5.bungee.api.ProxyServer
 import net.md_5.bungee.api.plugin.Plugin
-// import org.bstats.bungeecord.Metrics
+import org.bstats.bungeecord.Metrics
 
 class SuperPenalties : Plugin() {
 
@@ -25,7 +25,7 @@ class SuperPenalties : Plugin() {
 
         Config.init()
 
-        // val metrics = Metrics(this, 12429)
+        val metrics = Metrics(this, 12429)
     }
 
     override fun onDisable() {
