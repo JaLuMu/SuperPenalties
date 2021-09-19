@@ -10,9 +10,9 @@ __________
 - All messages are customizable
 - mariaDB connection
 
-**Work in progess:**
-- Add custom Penalties (WIP)
-- Redis cache support (WIP)
+**Work in progress:**
+- Add custom Penalties
+- Redis cache support
 
 __________
 
