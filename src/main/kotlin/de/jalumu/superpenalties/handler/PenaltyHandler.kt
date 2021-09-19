@@ -70,7 +70,7 @@ object PenaltyHandler {
 
                 player.disconnect(
                     TextComponent(
-                        (MessageData.peneltyBan)
+                        (MessageData.penaltyBan)
                             .replace("&", "§")
                             .replace("%DURATION%", finalPenaltyTime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")))
                             .replace("%REASON%", penalty.name)
@@ -99,7 +99,7 @@ object PenaltyHandler {
 
                 connection?.disconnect(
                     TextComponent(
-                        (MessageData.peneltyMute)
+                        (MessageData.penaltyMute)
                             .replace("&", "§")
                             .replace("%DURATION%", finalPenaltyTime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")))
                             .replace("%REASON%", penalty.name)

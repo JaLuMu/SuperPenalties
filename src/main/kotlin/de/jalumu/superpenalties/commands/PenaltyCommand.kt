@@ -20,7 +20,7 @@ class PenaltyCommand : Command("penalty", "superpenalty.penalty"), TabExecutor {
                     val uuid = args[0].getOfflinePlayerUUID()
 
                     if (uuid == null) {
-                        sender.sendMessage(TextComponent(MessageData.peneltyCouldNotExecuted))
+                        sender.sendMessage(TextComponent(MessageData.penaltyCouldNotExecuted))
                     } else {
                         PenaltyHandler.executePenalty(uuid, sender.name, penalty)
                         sender.sendMessage(TextComponent(MessageData.penaltyExecuted))

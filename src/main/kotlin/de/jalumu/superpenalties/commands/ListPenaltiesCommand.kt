@@ -28,7 +28,7 @@ class ListPenaltiesCommand : Command("listPenalties", "superpenalty.list"), TabE
                 if (player == null) {
                     uuid = args[0].getOfflinePlayerUUID()
                     if (uuid == null) {
-                        sender.sendMessage(TextComponent(MessageData.peneltyListPlayerNotFound))
+                        sender.sendMessage(TextComponent(MessageData.penaltyListPlayerNotFound))
                         return
                     }
                 } else {
@@ -102,7 +102,7 @@ class ListPenaltiesCommand : Command("listPenalties", "superpenalty.list"), TabE
                     }
 
             } else {
-                sender.sendMessage(TextComponent(MessageData.peneltyListUsage))
+                sender.sendMessage(TextComponent(MessageData.penaltyListUsage))
             }
         }
     }

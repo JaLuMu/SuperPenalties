@@ -29,7 +29,7 @@ class RemovePenaltyCommand : Command("removePenalty", "superpenalty.remove"), Ta
                 PenaltyCacheHandler.invalidate()
 
         }else {
-                sender.sendMessage(TextComponent(MessageData.peneltyRemoveUsage))
+                sender.sendMessage(TextComponent(MessageData.penaltyRemoveUsage))
             }
 
         }

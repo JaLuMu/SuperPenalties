@@ -43,42 +43,42 @@ object Config {
             } else {
                 configuration.set("message.penaltyCreated", MessageData.penaltyCreated)
             }
-            if (configuration.contains("message.peneltyCouldNotExecuted")) {
-                MessageData.peneltyCouldNotExecuted =
-                    configuration.getString("message.peneltyCouldNotExecuted").replace("&", "§")
+            if (configuration.contains("message.penaltyCouldNotExecuted")) {
+                MessageData.penaltyCouldNotExecuted =
+                    configuration.getString("message.penaltyCouldNotExecuted").replace("&", "§")
             } else {
-                configuration.set("message.peneltyCouldNotExecuted", MessageData.peneltyCouldNotExecuted)
+                configuration.set("message.penaltyCouldNotExecuted", MessageData.penaltyCouldNotExecuted)
             }
-            if (configuration.contains("message.peneltyMute")) {
-                MessageData.peneltyMute = configuration.getString("message.peneltyMute").replace("&", "§")
+            if (configuration.contains("message.penaltyMute")) {
+                MessageData.penaltyMute = configuration.getString("message.penaltyMute").replace("&", "§")
             } else {
-                configuration.set("message.peneltyMute", MessageData.peneltyMute)
+                configuration.set("message.penaltyMute", MessageData.penaltyMute)
             }
-            if (configuration.contains("message.peneltyBan")) {
-                MessageData.peneltyBan = configuration.getString("message.peneltyBan").replace("&", "§")
+            if (configuration.contains("message.penaltyBan")) {
+                MessageData.penaltyBan = configuration.getString("message.penaltyBan").replace("&", "§")
             } else {
-                configuration.set("message.peneltyBan", MessageData.peneltyBan)
+                configuration.set("message.penaltyBan", MessageData.penaltyBan)
             }
-            if (configuration.contains("message.peneltyListPlayerNotFound")) {
-                MessageData.peneltyListPlayerNotFound =
-                    configuration.getString("message.peneltyListPlayerNotFound").replace("&", "§")
+            if (configuration.contains("message.penaltyListPlayerNotFound")) {
+                MessageData.penaltyListPlayerNotFound =
+                    configuration.getString("message.penaltyListPlayerNotFound").replace("&", "§")
             } else {
-                configuration.set("message.peneltyListPlayerNotFound", MessageData.peneltyListPlayerNotFound)
+                configuration.set("message.penaltyListPlayerNotFound", MessageData.penaltyListPlayerNotFound)
             }
             if (configuration.contains("message.addPenaltyUsage")) {
                 MessageData.addPenaltyUsage = configuration.getString("message.addPenaltyUsage").replace("&", "§")
             } else {
                 configuration.set("message.addPenaltyUsage", MessageData.addPenaltyUsage)
             }
-            if (configuration.contains("message.peneltyListUsage")) {
-                MessageData.peneltyListUsage = configuration.getString("message.peneltyListUsage").replace("&", "§")
+            if (configuration.contains("message.penaltyListUsage")) {
+                MessageData.penaltyListUsage = configuration.getString("message.penaltyListUsage").replace("&", "§")
             } else {
-                configuration.set("message.peneltyListUsage", MessageData.peneltyListUsage)
+                configuration.set("message.penaltyListUsage", MessageData.penaltyListUsage)
             }
-            if (configuration.contains("message.peneltyRemoveUsage")) {
-                MessageData.peneltyRemoveUsage = configuration.getString("message.peneltyRemoveUsage").replace("&", "§")
+            if (configuration.contains("message.penaltyRemoveUsage")) {
+                MessageData.penaltyRemoveUsage = configuration.getString("message.penaltyRemoveUsage").replace("&", "§")
             } else {
-                configuration.set("message.peneltyRemoveUsage", MessageData.peneltyRemoveUsage)
+                configuration.set("message.penaltyRemoveUsage", MessageData.penaltyRemoveUsage)
             }
             if (configuration.contains("message.penaltyUsage")) {
                 MessageData.penaltyUsage = configuration.getString("message.penaltyUsage").replace("&", "§")
