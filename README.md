@@ -5,11 +5,14 @@ __________
 
 ![](img/features.png)
 
+- Add predefined Penalties
+- Automatic Penalty hardship calculation
+- All messages are customizable
+- mariaDB connection
 
-
-- Bla Bla
-- Bla Bla
-- Bla Bla
+**Work in progess:**
+- Add custom Penalties (WIP)
+- Redis cache support (WIP)
 
 __________
 
