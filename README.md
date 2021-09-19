@@ -27,6 +27,15 @@ __________
 
 __________
 
+![](img/config.png)
+
+In the file `/plugins/SuperPenalties/config.yml` you can change all messages of the plugin as required. You can also translate it into another language.
+The following example is in German:
+
+![](img/msgconfig.png)
+
+__________
+
 ![](img/metrics.png)
 
 
