@@ -16,11 +16,11 @@ __________
 ![](img/commands.png)
 
 
-
-- Bla Bla
-- Bla Bla
-- Bla Bla
-
+- `/addPenalty` Permission: `superpenalty.add` - Register a new Penalty
+- `/removePenalty` Permission: `superpenalty.remove` - Removes a Penalty from Database
+- `/penalty` Permission: `superpenalty.penalty` - Execute a Penalty
+- `/pardon` Permission: `superpenalty.pardon` - Remove a Penalty from a specific Player
+- `/listPenalties` Permission: `superpenalty.list` - Shows all executed Penalties from a specific Player
 
 __________
 
