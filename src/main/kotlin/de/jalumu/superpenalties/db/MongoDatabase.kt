@@ -12,8 +12,13 @@ class MongoDatabase {
     var connectWithString = false
 
     lateinit var mongoClient: MongoClient
-    lateinit var mongoDatabase: MongoDatabase
     lateinit var mongoCollection: MongoCollection<Document>
+
+    val players: MongoCollection<Document>
+        get() {
+            val database = mongoClient.getDatabase("penalties")
+            return database.getCollection("player")
+        }
 
     constructor(host: String, port: Int, database: String, username: String, password: String) {
         credential = MongoCredential.createCredential(username, database, password.toCharArray())

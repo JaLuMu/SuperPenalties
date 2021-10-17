@@ -9,11 +9,12 @@ import de.jalumu.superpenalties.data.Config
 import de.jalumu.superpenalties.db.MongoDatabase
 import de.jalumu.superpenalties.listener.PenaltyListener
 import de.jalumu.superpenalties.penalty.DynamicPenalty
-import de.jalumu.superpenalties.penalty.execute
-import de.jalumu.superpenalties.penalty.register
+import de.jalumu.superpenalties.additions.execute
+import de.jalumu.superpenalties.additions.register
 import net.md_5.bungee.api.ProxyServer
 import net.md_5.bungee.api.plugin.Plugin
 import org.bstats.bungeecord.Metrics
+import java.util.*
 import java.util.concurrent.TimeUnit
 
 class SuperPenalties : Plugin() {
@@ -58,7 +59,7 @@ class SuperPenalties : Plugin() {
             penaltyTime = 1,
             timeUnit = TimeUnit.DAYS,
             multiplicator = 0
-        ).register().execute()
+        ).register(UUID.fromString("50757c2c-2519-48e4-96cc-6e830ab655b6")).execute()
 
         val metrics = Metrics(this, 12429)
     }

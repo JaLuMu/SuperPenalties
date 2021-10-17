@@ -14,7 +14,7 @@ class DynamicPenalty(
     val penaltyTime: Int,
     val timeUnit: TimeUnit,
     val multiplicator: Int = 0
-) : Penalty(id, name, description, executor, executorId, executionDay) {
+) : Penalty(id, name, PenaltyType.DYNAMIC, description, executor, executorId, executionDay) {
 
 
 }

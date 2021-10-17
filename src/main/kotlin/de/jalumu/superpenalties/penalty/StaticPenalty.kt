@@ -13,5 +13,5 @@ class StaticPenalty(
     executionDay: LocalDateTime = LocalDateTime.now(),
     val penaltyTime: Int,
     val timeUnit: TimeUnit,
-) : Penalty(id, name, description, executor, executorId, executionDay) {
+) : Penalty(id, name, PenaltyType.STATIC, description, executor, executorId, executionDay) {
 }

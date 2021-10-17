@@ -1,7 +1,7 @@
 package de.jalumu.superpenalties.commands
 
+import de.jalumu.superpenalties.additions.getOfflinePlayerUUID
 import de.jalumu.superpenalties.data.MessageData
-import de.jalumu.superpenalties.data.PlayerAdditions.getOfflinePlayerUUID
 import net.md_5.bungee.api.CommandSender
 import net.md_5.bungee.api.ProxyServer
 import net.md_5.bungee.api.chat.TextComponent
