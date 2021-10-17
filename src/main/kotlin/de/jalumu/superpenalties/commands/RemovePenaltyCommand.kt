@@ -1,15 +1,10 @@
 package de.jalumu.superpenalties.commands
 
 import de.jalumu.superpenalties.data.MessageData
-import de.jalumu.superpenalties.db.SQLDatabase
-import de.jalumu.superpenalties.db.tables.CurrentPenaltiesTable
-import de.jalumu.superpenalties.db.tables.RegisteredPenaltiesTable
 import net.md_5.bungee.api.CommandSender
 import net.md_5.bungee.api.chat.TextComponent
 import net.md_5.bungee.api.plugin.Command
 import net.md_5.bungee.api.plugin.TabExecutor
-import org.ktorm.dsl.delete
-import org.ktorm.dsl.eq
 
 class RemovePenaltyCommand : Command("removePenalty", "superpenalty.remove"), TabExecutor {
     override fun execute(sender: CommandSender, args: Array<out String>) {
@@ -17,12 +12,6 @@ class RemovePenaltyCommand : Command("removePenalty", "superpenalty.remove"), Ta
             if (args.size == 1) {
                 val name = args[0]
 
-                SQLDatabase.database.delete(CurrentPenaltiesTable){
-                    it.penalty_name eq name
-                }
-                SQLDatabase.database.delete(RegisteredPenaltiesTable){
-                    it.name eq name
-                }
 
                 //PenaltyCacheHandler.invalidate()
 
