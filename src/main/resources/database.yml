@@ -1,0 +1,11 @@
+mongo:
+  connectionString:
+    useConnectionString: false
+    connectionString: "mongodb+srv://SuperPenalties:SuperPenalties@mongodb.yourserverdomain.net/penalties"
+  server:
+    host: localhost
+    port: 27017
+    database: penalties
+  credentials:
+    username: SuperPenalties
+    password: SuperPenalties

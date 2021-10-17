@@ -4,8 +4,6 @@ import de.jalumu.superpenalties.data.MessageData
 import de.jalumu.superpenalties.db.SQLDatabase
 import de.jalumu.superpenalties.db.tables.CurrentPenaltiesTable
 import de.jalumu.superpenalties.db.tables.RegisteredPenaltiesTable
-import de.jalumu.superpenalties.handler.PenaltyCacheHandler
-import de.jalumu.superpenalties.handler.PenaltyHandler
 import net.md_5.bungee.api.CommandSender
 import net.md_5.bungee.api.chat.TextComponent
 import net.md_5.bungee.api.plugin.Command
@@ -26,7 +24,7 @@ class RemovePenaltyCommand : Command("removePenalty", "superpenalty.remove"), Ta
                     it.name eq name
                 }
 
-                PenaltyCacheHandler.invalidate()
+                //PenaltyCacheHandler.invalidate()
 
         }else {
                 sender.sendMessage(TextComponent(MessageData.penaltyRemoveUsage))
@@ -38,9 +36,6 @@ class RemovePenaltyCommand : Command("removePenalty", "superpenalty.remove"), Ta
     override fun onTabComplete(sender: CommandSender?, args: Array<out String>?): MutableIterable<String> {
 
         val list = mutableListOf<String>()
-        PenaltyHandler.penalties.forEach {
-            list.add(it)
-        }
         return list
     }
 

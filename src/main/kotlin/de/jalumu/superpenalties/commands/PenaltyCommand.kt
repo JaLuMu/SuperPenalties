@@ -2,7 +2,6 @@ package de.jalumu.superpenalties.commands
 
 import de.jalumu.superpenalties.data.MessageData
 import de.jalumu.superpenalties.data.PlayerAdditions.getOfflinePlayerUUID
-import de.jalumu.superpenalties.handler.PenaltyHandler
 import net.md_5.bungee.api.CommandSender
 import net.md_5.bungee.api.ProxyServer
 import net.md_5.bungee.api.chat.TextComponent
@@ -22,12 +21,12 @@ class PenaltyCommand : Command("penalty", "superpenalty.penalty"), TabExecutor {
                     if (uuid == null) {
                         sender.sendMessage(TextComponent(MessageData.penaltyCouldNotExecuted))
                     } else {
-                        PenaltyHandler.executePenalty(uuid, sender.name, penalty)
+                        //PenaltyHandler.executePenalty(uuid, sender.name, penalty)
                         sender.sendMessage(TextComponent(MessageData.penaltyExecuted))
                     }
 
                 } else {
-                    PenaltyHandler.executePenalty(player, sender.name, penalty)
+                    //PenaltyHandler.executePenalty(player, sender.name, penalty)
                     sender.sendMessage(TextComponent(MessageData.penaltyExecuted))
 
                 }
@@ -49,10 +48,10 @@ class PenaltyCommand : Command("penalty", "superpenalty.penalty"), TabExecutor {
                 }
                 2 -> {
                     val list = mutableListOf<String>()
-                    PenaltyHandler.penalties.forEach {
-                        list.add(it)
-                    }
-                    return list
+                    //PenaltyHandler.penalties.forEach {
+                        //list.add(it)
+                   // }
+                    return  list
                 }
             }
         }
