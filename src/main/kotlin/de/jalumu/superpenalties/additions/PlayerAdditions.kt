@@ -22,17 +22,17 @@ val ProxiedPlayer.penalties: MutableList<Penalty>
         with(SuperPenalties.instance.mongoDatabase.players) {
             val doc = find(Filters.eq("uuid", this@penalties.uniqueId.toString())).first()!!
 
-            val list = doc.getList("penalties", String::class.java)
+            val list = doc.getList("penalties", Document::class.java)
 
             val penalties = mutableListOf<Penalty>()
 
             list.forEach {
                 val gson = Gson()
-                val penalty = gson.fromJson(it, Penalty::class.java)
+                val penalty = gson.fromJson(it.toJson(), Penalty::class.java)
                 penalties.add(
                     when (penalty.type) {
-                        PenaltyType.STATIC -> gson.fromJson(it, StaticPenalty::class.java)
-                        PenaltyType.DYNAMIC -> gson.fromJson(it, DynamicPenalty::class.java)
+                        PenaltyType.STATIC -> gson.fromJson(it.toJson(), StaticPenalty::class.java)
+                        PenaltyType.DYNAMIC -> gson.fromJson(it.toJson(), DynamicPenalty::class.java)
                         else -> penalty
                     }
                 )
